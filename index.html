@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jana Chamma — Robotics & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f1e3c;
+    --navy-mid: #1b2e52;
+    --blue: #2457c5;
+    --blue-light: #3b72e8;
+    --sky: #dbeafe;
+    --ice: #f0f5ff;
+    --slate: #4a5568;
+    --muted: #8899b0;
+    --rule: #d8e2f0;
+    --white: #ffffff;
+    --off: #f7f9fc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--slate);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ── HERO ────────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 8% 60px;
+    gap: 4rem;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; right: -120px; top: -120px;
+    width: 580px; height: 580px;
+    background: radial-gradient(circle, #dbeafe 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem; font-weight: 500;
+    color: var(--blue);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 4.4rem);
+    line-height: 1.05;
+    color: var(--navy);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-size: 1.05rem; font-weight: 300;
+    color: var(--slate); line-height: 1.8;
+    max-width: 460px;
+    margin-bottom: 2.4rem;
+  }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.8rem; }
+  .chip {
+    background: var(--ice); border: 1px solid #c7d9f5;
+    color: var(--blue); font-size: 0.78rem; font-weight: 500;
+    padding: 0.35rem 0.85rem; border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--blue); color: #fff;
+    padding: 0.75rem 1.8rem; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--navy);
+    border: 1.5px solid var(--rule);
+    padding: 0.72rem 1.8rem; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+    text-decoration: none; transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+
+  /* Hero visual */
+  .hero-visual {
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .avatar-ring {
+    width: 340px; height: 340px; border-radius: 50%;
+    border: 2px dashed #c7d9f5;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    animation: spin-slow 30s linear infinite;
+  }
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+  .avatar-inner {
+    width: 280px; height: 280px; border-radius: 50%;
+    background: var(--ice);
+    border: 2px solid #c7d9f5;
+    display: flex; align-items: center; justify-content: center;
+    animation: spin-slow 30s linear infinite reverse;
+    overflow: hidden;
+    position: relative;
+  }
+  .avatar-initials {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem; color: var(--blue);
+    opacity: 0.25;
+    user-select: none;
+    animation: spin-slow 30s linear infinite;
+  }
+  .avatar-text {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem;
+  }
+  .avatar-text p { font-size: 0.78rem; font-weight: 500; color: var(--slate); letter-spacing: 0.05em; }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22c55e;
+    display: inline-block; margin-right: 0.4rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+  .orbit-dot {
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--blue-light);
+  }
+
+  /* ── SECTION SHARED ──────────────────────────────────── */
+  section { padding: 6rem 8%; }
+  section:nth-child(even) { background: var(--off); }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--blue);
+    margin-bottom: 0.6rem;
+  }
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--navy); line-height: 1.1;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── ABOUT ───────────────────────────────────────────── */
+  .about-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start;
+  }
+  .about-body { font-size: 1rem; color: var(--slate); line-height: 1.85; }
+  .about-body p { margin-bottom: 1.2rem; }
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 10px; padding: 1.4rem;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem; color: var(--blue); line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.82rem; color: var(--muted); font-weight: 500; letter-spacing: 0.03em; }
+
+  /* ── EXPERIENCE ──────────────────────────────────────── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 1.5px; background: var(--rule);
+  }
+  .timeline-item { position: relative; padding-bottom: 2.8rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    position: absolute; left: -2rem; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--blue); border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--blue);
+  }
+  .tl-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.73rem; color: var(--muted);
+    letter-spacing: 0.06em; margin-bottom: 0.35rem;
+  }
+  .tl-role {
+    font-size: 1.05rem; font-weight: 500; color: var(--navy);
+    margin-bottom: 0.15rem;
+  }
+  .tl-org { font-size: 0.9rem; color: var(--blue); font-weight: 500; margin-bottom: 0.6rem; }
+  .tl-desc { font-size: 0.9rem; color: var(--slate); line-height: 1.8; }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+  .tl-tag {
+    background: var(--ice); color: var(--blue);
+    font-size: 0.73rem; font-family: 'DM Mono', monospace;
+    padding: 0.2rem 0.65rem; border-radius: 4px; border: 1px solid #c7d9f5;
+  }
+
+  /* ── SKILLS ──────────────────────────────────────────── */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem;
+  }
+  .skill-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 10px; padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .skill-icon {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: var(--ice); border: 1px solid #c7d9f5;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; margin-bottom: 0.9rem;
+  }
+  .skill-title { font-size: 0.9rem; font-weight: 500; color: var(--navy); margin-bottom: 0.5rem; }
+  .skill-items { font-size: 0.82rem; color: var(--muted); line-height: 1.7; font-family: 'DM Mono', monospace; }
+
+  /* ── PROJECTS ────────────────────────────────────────── */
+  .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem;
+  max-width: 1100px;
+  margin: auto;
+}
+  .proj-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .proj-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+}
+  .proj-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .proj-num {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    color: var(--blue); letter-spacing: 0.1em; margin-bottom: 0.8rem;
+  }
+  .proj-name { font-size: 1rem; font-weight: 500; color: var(--navy); margin-bottom: 0.5rem; }
+  .proj-desc { font-size: 0.87rem; color: var(--slate); line-height: 1.75; margin-bottom: 1rem; }
+  .proj-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .stack-tag {
+    background: var(--ice); border: 1px solid #c7d9f5;
+    color: var(--blue); font-size: 0.7rem; font-family: 'DM Mono', monospace;
+    padding: 0.18rem 0.55rem; border-radius: 4px;
+  }
+
+  /* ── CONTACT ─────────────────────────────────────────── */
+  .contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start; }
+  .contact-body { font-size: 1rem; color: var(--slate); line-height: 1.85; }
+  .contact-body p { margin-bottom: 1.2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.9rem 1.2rem; border-radius: 8px;
+    border: 1px solid var(--rule); background: var(--white);
+    text-decoration: none; color: var(--navy);
+    font-size: 0.9rem; transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--blue); background: var(--ice); }
+  .contact-link-icon { font-size: 1rem; }
+  .contact-link-label { font-weight: 500; }
+  .contact-link-sub { font-size: 0.8rem; color: var(--muted); }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    padding: 2rem 8%; text-align: center;
+    border-top: 1px solid var(--rule);
+    font-size: 0.82rem; color: var(--muted);
+    font-family: 'DM Mono', monospace; letter-spacing: 0.04em;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding: 100px 5% 60px; }
+    .hero-visual { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1.2rem; }
+    .nav-links { gap: 1.2rem; }
+    section { padding: 4rem 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#top">Jana Chamma</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Robotics &amp; AI Engineer</span>
+    <h1 class="hero-name">Jana<br>Chamma</h1>
+    <p class="hero-title">Designing and optimizing machine learning systems for real-world deployment, with a focus on efficiency, hardware-aware AI, and robust perception pipelines.</p>
+    <div class="hero-chips">
+      <span class="chip">LiDAR · Point Clouds</span>
+      <span class="chip">NVIDIA Jetson</span>
+      <span class="chip">YOLOv5 · PyTorch</span>
+      <span class="chip">Digital Twins</span>
+      <span class="chip">Azure IoT</span>
+    </div>
+    <p style="margin-top: 1.2rem; font-size: 0.9rem; color: #4a5568;">
+  <strong>Research Interests:</strong> Machine Learning Systems (MLSys), Hardware-Software Co-Design, Efficient Deep Learning (Quantization & Optimization), Embedded AI.
+</p>
+
+    <div class="hero-cta">
+      <a class="btn-primary" href="#contact">Get in touch</a>
+      <a class="btn-outline" href="#projects">View projects</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="avatar-ring">
+      <div class="avatar-inner">
+        <img src="JanaChammaImage.JPG" alt="Jana Chamma" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="avatar-text">
+          <p><span class="status-dot"></span>Open to relocation</p>
+          <p>Tripoli, Lebanon</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About me</div>
+  <h2 class="section-heading">Engineer. Educator.<br><em>Community Builder.</em></h2>
+  <div class="about-grid">
+    <div class="about-body">
+      <p>I am a Robotics & AI Engineer with hands-on experience designing and deploying multi-sensor perception systems combining <strong>LiDAR, depth cameras, and IMU</strong> for real-world autonomy and 3D mapping.</p>
+      <p>At GlobalDWS, I build end-to-end AI pipelines on <strong>NVIDIA Jetson</strong> hardware, contribute to digital twin workflows, and integrate cloud-connected telemetry via Azure IoT Central. My work spans from raw point-cloud capture to spatial intelligence at scale.</p>
+      <p>I hold a B.Sc. in Computer Science from the <strong>American University of Beirut</strong> (USAID Full Scholarship, Dean's Honor List) and completed an exchange semester at <strong>Carnegie Mellon University – Qatar</strong> focusing on Machine Learning and AI Ethics.</p>
+      <p>Beyond engineering, I teach STEM and digital literacy to youth and women through NGOs in North Lebanon — because technology is only powerful when it's accessible.</p>
+      <p>My work focuses on analyzing and optimizing ML pipelines under real-world constraints, including latency, accuracy, and resource efficiency on embedded hardware. I am particularly interested in bridging the gap between machine learning models and system-level performance.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years in Robotics & AI</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Workshop Hours Delivered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Top Universities Attended</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Technical Projects Deployed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-heading">Where I've worked</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="tl-meta">Feb 2025 – Present · Remote</div>
+      <div class="tl-role">Robotics & AI Specialist</div>
+      <div class="tl-org">GlobalDWS · Toronto, Canada</div>
+      <div class="tl-desc">
+        Designed end-to-end LiDAR dataflows for robotic perception and 3D mapping. Built and deployed a 360° human & chair detection system on NVIDIA Jetson hardware. Contributed to digital twin pipelines and integrated Azure IoT Central for real-time telemetry.
+      </div>
+      <div class="tl-tags">
+        <span class="tl-tag">LiDAR</span><span class="tl-tag">YOLOv5</span><span class="tl-tag">Jetson Nano/Orin</span><span class="tl-tag">OpenCV</span><span class="tl-tag">Azure IoT</span><span class="tl-tag">Digital Twins</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="tl-meta">Aug 2025 – Present · Freelance</div>
+      <div class="tl-role">AI Agent & Annotation Specialist</div>
+      <div class="tl-org">Mindrift</div>
+      <div class="tl-desc">
+        Large-scale prompt engineering, annotation, and LLM evaluation. Assess AI responses for accuracy, ethics, clarity, and real-world user impact. Deepen expertise in human–AI interaction and responsible AI.
+      </div>
+      <div class="tl-tags">
+        <span class="tl-tag">Prompt Engineering</span><span class="tl-tag">LLM Evaluation</span><span class="tl-tag">AI Ethics</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="tl-meta">Mar 2025 – June 2025 · Lebanon</div>
+      <div class="tl-role">IT Officer & Computer Trainer</div>
+      <div class="tl-org">Women Program Association (WPA)</div>
+      <div class="tl-desc">
+        Deliver digital literacy programs for women aged 18–30. Provide hands-on IT support and drive operational digitization. Help learners adopt digital tools for employment and education.
+      </div>
+      <div class="tl-tags">
+        <span class="tl-tag">Digital Literacy</span><span class="tl-tag">IT Support</span><span class="tl-tag">Community Tech</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="tl-meta">Oct 2025 – Present · Lebanon (Part-time)</div>
+      <div class="tl-role">STEM & Web Development Trainer</div>
+      <div class="tl-org">Al-Jana & Al-Smoud NGOs</div>
+      <div class="tl-desc">
+        Teach robotics, web development, programming basics, and digital safety to youth. Designed 100+ hours of educational workshops. Built a community-centered learning environment to promote digital inclusion.
+      </div>
+      <div class="tl-tags">
+        <span class="tl-tag">Robotics Education</span><span class="tl-tag">Web Dev</span><span class="tl-tag">Youth STEM</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical skills</div>
+  <h2 class="section-heading">What I work with</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📡</div>
+      <div class="skill-title">Robotics & Perception</div>
+      <div class="skill-items">LiDAR · PCD & PLY Point Clouds · Sensor Fusion (LiDAR + Depth + IMU) · 3D Mapping · Digital Twins</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-title">AI & Embedded Systems</div>
+      <div class="skill-items">YOLOv5 · PyTorch · OpenCV · NVIDIA Jetson Nano / Orin · Computer Vision Pipelines</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💻</div>
+      <div class="skill-title">Programming</div>
+      <div class="skill-items">Python · C++ · C · Java</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-title">Cloud & Systems</div>
+      <div class="skill-items">Azure IoT Central · Telemetry Pipelines · Linux</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-title">Web & DevOps</div>
+      <div class="skill-items">Flask · FastAPI · Docker · React.js · Next.js</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌍</div>
+      <div class="skill-title">Languages</div>
+      <div class="skill-items">Arabic — Native · English — Fluent</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-heading">Selected work</h2>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <div class="proj-num">01 · PERCEPTION</div>
+      <div class="proj-name">360° Perception Pipeline</div>
+      <div class="proj-desc">
+      End-to-end 360° perception system using YOLOv5 with degree-based quadrant splitting.
+      Designed to improve spatial accuracy and reduce detection ambiguity in panoramic images.
+
+      Optimized for embedded deployment on NVIDIA Jetson, achieving ~1.4s inference per quadrant.
+      Evaluated trade-offs between resolution, latency, and detection accuracy across multiple configurations.
+
+      Integrated structured telemetry for real-time system monitoring and analysis.
+      </div>     
+      <div class="proj-stack">
+        <span class="stack-tag">YOLOv5</span><span class="stack-tag">OpenCV</span><span class="stack-tag">PyTorch</span><span class="stack-tag">Azure IoT</span><span class="stack-tag">Jetson Orin</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">02 · MACHINE LEARNING</div>
+      <div class="proj-name">Machine Failure Prediction</div>
+      <div class="proj-desc">ML classification model to detect and categorize machinery faults from sensor data. Explored feature engineering, anomaly detection, and model interpretability.</div>
+      <div class="proj-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">Pandas</span><span class="stack-tag">Classification</span>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">03 · DATA SYSTEMS</div>
+      <div class="proj-name">Robotics Error Logs Database</div>
+      <div class="proj-desc">Structured data system for improving robot debugging and traceability. Enables pattern recognition across error logs and reduces mean time to diagnosis.</div>
+      <div class="proj-stack">
+        <span class="stack-tag">Database Design</span><span class="stack-tag">SQL</span><span class="stack-tag">Robotics</span>
+      </div>
+    </div>
+    <div class="proj-card">
+  <div class="proj-num">04 · AI + DATA SCIENCE</div>
+  <div class="proj-name">Autonomous Systems Risk Analysis with Human-in-the-Loop</div>
+  <div class="proj-desc">
+    Developed a data-driven model to analyze risks and decision-making behavior in autonomous weapon systems using real-world drone data (Yemen, Somalia).
+    Implemented a human-in-the-loop framework to improve system accountability and decision validation.
+    Combined machine learning with ethical evaluation frameworks to study bias, reliability, and failure cases in high-risk environments.
+  </div>
+  <div class="proj-stack">
+    <span class="stack-tag">Python</span>
+    <span class="stack-tag">Machine Learning</span>
+    <span class="stack-tag">Human-in-the-Loop</span>
+    <span class="stack-tag">Data Analysis</span>
+  </div>
+</div>
+    
+    <div class="proj-card">
+      <div class="proj-num">05 · NETWORKING</div>
+      <div class="proj-name">UDP Reliable Transfer Protocol</div>
+      <div class="proj-desc">Custom implementation of reliability over UDP: ACKs, retransmissions, sliding window, and timeout handling. Tested under simulated packet loss.</div>
+      <div class="proj-stack">
+        <span class="stack-tag">C</span><span class="stack-tag">Networking</span><span class="stack-tag">UDP</span><span class="stack-tag">Systems</span>
+      </div>
+    </div>
+   <div class="proj-card">
+  <div class="proj-num">06 · DISTRIBUTED SYSTEMS</div>
+  <div class="proj-name">MelodySync – Microservices Media Processing System</div>
+
+  <div class="proj-desc">
+    Designed and deployed a multi-service web application for media conversion using a microservices architecture.
+    
+    Containerized frontend, backend, and database services using Docker, enabling consistent deployment across environments.
+    Implemented asynchronous communication between services using a message broker (RabbitMQ) to handle media processing at scale.
+
+    Built secure authentication using JWT and integrated CI/CD pipelines with GitLab container registry for automated builds and deployment.
+    Evaluated system trade-offs between synchronous and asynchronous processing, focusing on scalability, latency, and resource efficiency.
+  </div>
+
+  <div class="proj-stack">
+    <span class="stack-tag">Docker</span>
+    <span class="stack-tag">Microservices</span>
+    <span class="stack-tag">RabbitMQ</span>
+    <span class="stack-tag">Flask</span>
+    <span class="stack-tag">Next.js</span>
+    <span class="stack-tag">CI/CD</span>
+  </div>
+</div>
+
+  <div class="proj-card">
+  <div class="proj-num">07 · MULTI-SENSOR SYSTEMS</div>
+  <div class="proj-name">LiDAR + Vision 3D Mapping Pipeline</div>
+  <div class="proj-desc">
+    Designed a multi-sensor pipeline combining LiDAR point clouds and camera data to generate structured 3D maps and room-level semantic understanding.
+    Implemented synchronization between visual detections (YOLO, OCR) and spatial data using timestamps, enabling accurate mapping of objects and room attributes.
+    Focused on system-level integration, data alignment, and efficient processing of large-scale point cloud data.
+  </div>
+  <div class="proj-stack">
+    <span class="stack-tag">LiDAR</span>
+    <span class="stack-tag">Open3D</span>
+    <span class="stack-tag">YOLO</span>
+    <span class="stack-tag">OCR</span>
+    <span class="stack-tag">Point Clouds</span>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-heading">Let's connect</h2>
+  <div class="contact-grid">
+    <div class="contact-body">
+      <p>I'm actively open to research positions, engineering roles, and collaborations at the intersection of robotics, embedded AI, and ML systems — particularly in the UAE and internationally.</p>
+      <p>If you're working on hardware-efficient AI, sensor fusion, digital twins, or ML systems research and think there's a fit, I'd love to hear from you.</p>
+      <p><span class="status-dot"></span> Available for roles starting mid-2026 · Open to relocation worldwide.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:janachamma33@outlook.com">
+        <span class="contact-link-icon">✉</span>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-sub">janachamma33@outlook.com</div>
+        </div>
+      </a>
+      <a class="contact-link" href="tel:+96176711695">
+        <span class="contact-link-icon">📞</span>
+        <div>
+          <div class="contact-link-label">Phone</div>
+          <div class="contact-link-sub">+961 76 711 695</div>
+        </div>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/jana-chamma-26b7212b3/" target="_blank">
+        <span class="contact-link-icon">🔗</span>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-sub">linkedin.com/in/jana-chamma-26b7212b3/</div>
+        </div>
+      </a>
+      <a class="contact-link" href="https://github.com/janachamma" target="_blank">
+        <span class="contact-link-icon">⌨</span>
+        <div>
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-sub">github.com/janachamma</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Jana Chamma · Robotics & AI Engineer · Tripoli, Lebanon · Open to Relocation</p>
+</footer>
+
+</body>
+</html>
