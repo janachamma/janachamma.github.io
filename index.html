@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jana Chamma — Robotics & AI Engineer</title>
+<title>Jana Chamma — AI & ML Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -21,6 +21,7 @@
     --rule: #d8e2f0;
     --white: #ffffff;
     --off: #f7f9fc;
+    --green: #22c55e;
   }
 
   html { scroll-behavior: smooth; }
@@ -126,9 +127,18 @@
     text-decoration: none; transition: border-color 0.2s, transform 0.15s;
     display: inline-block;
   }
-  .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+  .btn-download {
+    background: transparent; color: var(--slate);
+    border: 1.5px solid var(--rule);
+    padding: 0.72rem 1.8rem; border-radius: 6px;
+    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em;
+    text-decoration: none; transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+  .btn-download:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+  .btn-download-icon { font-size: 0.9rem; }
 
-  /* Hero visual */
+  
   .hero-visual {
     display: flex; align-items: center; justify-content: center;
     position: relative; z-index: 1;
@@ -173,10 +183,6 @@
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.6; transform: scale(0.85); }
-  }
-  .orbit-dot {
-    position: absolute; width: 10px; height: 10px; border-radius: 50%;
-    background: var(--blue-light);
   }
 
   /* ── SECTION SHARED ──────────────────────────────────── */
@@ -241,6 +247,8 @@
   }
   .tl-org { font-size: 0.9rem; color: var(--blue); font-weight: 500; margin-bottom: 0.6rem; }
   .tl-desc { font-size: 0.9rem; color: var(--slate); line-height: 1.8; }
+  .tl-desc ul { padding-left: 1.2rem; margin-top: 0.4rem; }
+  .tl-desc li { margin-bottom: 0.4rem; }
   .tl-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
   .tl-tag {
     background: var(--ice); color: var(--blue);
@@ -269,24 +277,35 @@
 
   /* ── PROJECTS ────────────────────────────────────────── */
   .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.8rem;
-  max-width: 1100px;
-  margin: auto;
-}
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+    max-width: 1100px;
+    margin: auto;
+  }
   .proj-card {
     background: var(--white); border: 1px solid var(--rule);
     border-radius: 12px; padding: 1.8rem;
     transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
   }
-  .proj-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 280px;
-}
   .proj-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .proj-card.featured {
+    border-color: var(--blue);
+    background: linear-gradient(135deg, #f0f5ff 0%, #ffffff 100%);
+  }
+  .proj-card.featured .proj-num { color: var(--blue-light); }
+  .proj-badge {
+    display: inline-block;
+    background: var(--blue); color: #fff;
+    font-size: 0.65rem; font-family: 'DM Mono', monospace;
+    padding: 0.18rem 0.6rem; border-radius: 4px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 0.7rem;
+  }
   .proj-num {
     font-family: 'DM Mono', monospace; font-size: 0.7rem;
     color: var(--blue); letter-spacing: 0.1em; margin-bottom: 0.8rem;
@@ -298,6 +317,44 @@
     background: var(--ice); border: 1px solid #c7d9f5;
     color: var(--blue); font-size: 0.7rem; font-family: 'DM Mono', monospace;
     padding: 0.18rem 0.55rem; border-radius: 4px;
+  }
+
+  /* ── R&D CALLOUT ─────────────────────────────────────── */
+  .rnd-callout {
+    background: linear-gradient(135deg, #0f1e3c 0%, #1b2e52 100%);
+    border-radius: 16px;
+    padding: 2.5rem 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .rnd-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  .rnd-text h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .rnd-text p {
+    font-size: 0.9rem;
+    color: #8899b0;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+  }
+  .rnd-doc {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #dbeafe;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
   }
 
   /* ── CONTACT ─────────────────────────────────────────── */
@@ -333,6 +390,7 @@
     nav { padding: 0 1.2rem; }
     .nav-links { gap: 1.2rem; }
     section { padding: 4rem 5%; }
+    .projects-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -353,23 +411,23 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-text">
-    <span class="hero-eyebrow">Robotics &amp; AI Engineer</span>
+    <span class="hero-eyebrow">AI Systems · ML Engineering · Computer Vision · Data Platforms</span>
     <h1 class="hero-name">Jana<br>Chamma</h1>
-    <p class="hero-title">Designing and optimizing machine learning systems for real-world deployment, with a focus on efficiency, hardware-aware AI, and robust perception pipelines.</p>
+    <p class="hero-title">Building production ML systems, computer vision pipelines, autonomous perception, and cloud-integrated data platforms — from model to deployment to scale.</p>
     <div class="hero-chips">
-      <span class="chip">LiDAR · Point Clouds</span>
-      <span class="chip">NVIDIA Jetson</span>
-      <span class="chip">YOLOv5 · PyTorch</span>
-      <span class="chip">Digital Twins</span>
-      <span class="chip">Azure IoT</span>
+      <span class="chip">Applied AI · ML Systems</span>
+      <span class="chip">Computer Vision · OCR</span>
+      <span class="chip">Data Pipelines · Analytics</span>
+      <span class="chip">FastAPI · Azure · AWS</span>
+      <span class="chip">Edge AI · NVIDIA Jetson</span>
+      <span class="chip">Cloud & Backend Systems</span>
     </div>
-    <p style="margin-top: 1.2rem; font-size: 0.9rem; color: #4a5568;">
-  <strong>Research Interests:</strong> Machine Learning Systems (MLSys), Hardware-Software Co-Design, Efficient Deep Learning (Quantization & Optimization), Embedded AI.
-</p>
-
     <div class="hero-cta">
       <a class="btn-primary" href="#contact">Get in touch</a>
       <a class="btn-outline" href="#projects">View projects</a>
+      <a class="btn-download" href="Jana_Chamma_CV.docx" download="Jana_Chamma_CV.docx">
+        <span class="btn-download-icon">⬇</span> Download CV
+      </a>
     </div>
   </div>
   <div class="hero-visual">
@@ -391,31 +449,35 @@
   <h2 class="section-heading">Engineer. Educator.<br><em>Community Builder.</em></h2>
   <div class="about-grid">
     <div class="about-body">
-      <p>I am a Robotics & AI Engineer with hands-on experience designing and deploying multi-sensor perception systems combining <strong>LiDAR, depth cameras, and IMU</strong> for real-world autonomy and 3D mapping.</p>
-      <p>At GlobalDWS, I build end-to-end AI pipelines on <strong>NVIDIA Jetson</strong> hardware, contribute to digital twin workflows, and integrate cloud-connected telemetry via Azure IoT Central. My work spans from raw point-cloud capture to spatial intelligence at scale.</p>
+      <p>I am an AI & ML Engineer with 1.5 years of production experience building end-to-end machine learning systems, computer vision pipelines, and data platforms — deployed on real hardware, connected to real clouds, serving real use cases.</p>
+      <p>At GlobalDWS, I design and deploy production AI systems combining machine learning, computer vision, backend engineering, and cloud-integrated data pipelines. My work includes building real-time ML inference systems using YOLOv5, OCR, and material classification models on NVIDIA Jetson hardware, engineering scalable FastAPI backends, and developing telemetry and analytics pipelines using Azure Blob, Azure SQL, and IoT Central.</p>
+      <p>I also contribute to autonomous perception and spatial AI workflows involving LiDAR, depth cameras, and multi-sensor data synchronization for digital twin and intelligent environment applications.</p>
       <p>I hold a B.Sc. in Computer Science from the <strong>American University of Beirut</strong> (USAID Full Scholarship, Dean's Honor List) and completed an exchange semester at <strong>Carnegie Mellon University – Qatar</strong> focusing on Machine Learning and AI Ethics.</p>
-      <p>Beyond engineering, I teach STEM and digital literacy to youth and women through NGOs in North Lebanon — because technology is only powerful when it's accessible.</p>
-      <p>My work focuses on analyzing and optimizing ML pipelines under real-world constraints, including latency, accuracy, and resource efficiency on embedded hardware. I am particularly interested in bridging the gap between machine learning models and system-level performance.</p>
+      <p>Beyond engineering, I teach robotics and programming to youth through NGOs in North Lebanon — because being able to explain complex systems clearly is as important as building them.</p>
     </div>
     <div class="about-stats">
+
       <div class="stat-card">
-        <div class="stat-num">3+</div>
-        <div class="stat-label">Years in Robotics & AI</div>
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Production Systems & Deployment</div>
       </div>
+
       <div class="stat-card">
-        <div class="stat-num">100+</div>
-        <div class="stat-label">Workshop Hours Delivered</div>
+        <div class="stat-num">Cloud</div>
+        <div class="stat-label">AI · Data · Backend Pipelines</div>
       </div>
+
       <div class="stat-card">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Top Universities Attended</div>
+        <div class="stat-num">ML</div>
+        <div class="stat-label">Computer Vision & Edge AI</div>
       </div>
+
       <div class="stat-card">
-        <div class="stat-num">5+</div>
-        <div class="stat-label">Technical Projects Deployed</div>
+        <div class="stat-num">Global</div>
+        <div class="stat-label">AUB · CMU-Q · International Teams</div>
       </div>
+
     </div>
-  </div>
 </section>
 
 <!-- EXPERIENCE -->
@@ -427,13 +489,26 @@
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="tl-meta">Feb 2025 – Present · Remote</div>
-      <div class="tl-role">Robotics & AI Specialist</div>
+      <div class="tl-role">AI & ML Systems Engineer</div>
       <div class="tl-org">GlobalDWS · Toronto, Canada</div>
       <div class="tl-desc">
-        Designed end-to-end LiDAR dataflows for robotic perception and 3D mapping. Built and deployed a 360° human & chair detection system on NVIDIA Jetson hardware. Contributed to digital twin pipelines and integrated Azure IoT Central for real-time telemetry.
+        <ul>
+          <li>Designed and deployed LiDAR-inertial SLAM pipelines using FastLIO and ROS2 with Livox MID360 and Pacecat M300 sensors — handling full stack from driver configuration to 3D map generation and 2D occupancy grid extraction.</li>
+          <li>Built a complete point cloud processing pipeline: PCD → LAS → COPC conversion using PDAL and Open3D, with noise removal, downsampling, and cloud-optimized storage for Azure Blob.</li>
+          <li>Implemented a semantic mapping pipeline fusing LiDAR occupancy maps with camera-based AI detections (YOLO, OCR, MINC) using pose-timestamp alignment — producing structured room-level JSON outputs.</li>
+          <li>Designed and documented a triple-sensor fusion workflow combining LiDAR, depth camera, and 360° imagery in RealityCapture to produce IFC-ready building models for digital twin pipelines.</li>
+          <li>Built and deployed a real-time 360° perception system on NVIDIA Jetson Nano/Orin: YOLOv5 + EasyOCR with degree-based quadrant splitting, time-windowed deduplication, Azure Blob upload, and SQL database integration.</li>
+          <li>Developed a FastAPI backend exposing the full autonomous mapping pipeline via REST endpoints — with background-threaded post-processing, persistent job state management, and artifact serving.</li>
+          <li>Developed structured telemetry and analytics pipelines for real-time operational monitoring, AI-driven reporting, and cloud-based data synchronization.</li>
+          <li>Performed ML benchmarking, inference optimization, and performance analysis across embedded and cloud environments to improve scalability and deployment efficiency.</li>
+          <li>Built backend workflow automation systems for AI inference orchestration, artifact management, and asynchronous processing using FastAPI and multithreaded pipelines.</li>
+          <li>Processed and validated multi-source sensor and operational data for structured storage, transformation, and downstream analytics workflows.</li>
+          <li>Built computer vision pipelines using OpenCV, OCR, and edge AI processing for real-time perception, analytics, and automation tasks.</li>
+          <li>Fine-tuned and optimized deep learning models including MobileNetV2 for custom computer vision and edge AI inference tasks.</li>
+        </ul>
       </div>
       <div class="tl-tags">
-        <span class="tl-tag">LiDAR</span><span class="tl-tag">YOLOv5</span><span class="tl-tag">Jetson Nano/Orin</span><span class="tl-tag">OpenCV</span><span class="tl-tag">Azure IoT</span><span class="tl-tag">Digital Twins</span>
+        <span class="tl-tag">ML Systems</span><span class="tl-tag">Computer Vision</span><span class="tl-tag">YOLOv5</span><span class="tl-tag">FastAPI</span><span class="tl-tag">Data Pipelines</span><span class="tl-tag">Azure</span><span class="tl-tag">Jetson</span><span class="tl-tag">ROS2</span><span class="tl-tag">SLAM</span><span class="tl-tag">LiDAR</span><span class="tl-tag">Sensor Fusion</span><span class="tl-tag">PDAL</span><span class="tl-tag">Open3D</span><span class="tl-tag">Digital Twins</span>
       </div>
     </div>
 
@@ -443,7 +518,7 @@
       <div class="tl-role">AI Agent & Annotation Specialist</div>
       <div class="tl-org">Mindrift</div>
       <div class="tl-desc">
-        Large-scale prompt engineering, annotation, and LLM evaluation. Assess AI responses for accuracy, ethics, clarity, and real-world user impact. Deepen expertise in human–AI interaction and responsible AI.
+        Large-scale prompt engineering, annotation, and LLM evaluation. Assess AI responses for accuracy, ethics, clarity, and real-world user impact.
       </div>
       <div class="tl-tags">
         <span class="tl-tag">Prompt Engineering</span><span class="tl-tag">LLM Evaluation</span><span class="tl-tag">AI Ethics</span>
@@ -452,11 +527,11 @@
 
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="tl-meta">Mar 2025 – June 2025 · Lebanon</div>
+      <div class="tl-meta">Mar 2025 – Jun 2026 · Lebanon</div>
       <div class="tl-role">IT Officer & Computer Trainer</div>
       <div class="tl-org">Women Program Association (WPA)</div>
       <div class="tl-desc">
-        Deliver digital literacy programs for women aged 18–30. Provide hands-on IT support and drive operational digitization. Help learners adopt digital tools for employment and education.
+        Delivered digital literacy programs for women aged 18–30. Provided hands-on IT support and drove operational digitization.
       </div>
       <div class="tl-tags">
         <span class="tl-tag">Digital Literacy</span><span class="tl-tag">IT Support</span><span class="tl-tag">Community Tech</span>
@@ -469,7 +544,7 @@
       <div class="tl-role">STEM & Web Development Trainer</div>
       <div class="tl-org">Al-Jana & Al-Smoud NGOs</div>
       <div class="tl-desc">
-        Teach robotics, web development, programming basics, and digital safety to youth. Designed 100+ hours of educational workshops. Built a community-centered learning environment to promote digital inclusion.
+        Teach robotics, web development, programming basics, and digital safety to youth. Designed 100+ hours of curriculum. The ability to explain complex systems clearly is as essential as building them.
       </div>
       <div class="tl-tags">
         <span class="tl-tag">Robotics Education</span><span class="tl-tag">Web Dev</span><span class="tl-tag">Youth STEM</span>
@@ -485,34 +560,39 @@
   <h2 class="section-heading">What I work with</h2>
   <div class="skills-grid">
     <div class="skill-card">
-      <div class="skill-icon">📡</div>
-      <div class="skill-title">Robotics & Perception</div>
-      <div class="skill-items">LiDAR · PCD & PLY Point Clouds · Sensor Fusion (LiDAR + Depth + IMU) · 3D Mapping · Digital Twins</div>
+      <div class="skill-icon">🤖</div>
+      <div class="skill-title">ML & AI</div>
+      <div class="skill-items">PyTorch · Scikit-learn · YOLOv5/v8 · MobileNetV2 · Transfer Learning · Fine-Tuning · CLIP · EasyOCR · TensorRT · Pandas · NumPy · Feature Engineering · Model Optimization · LLM Evaluation · Applied AI · Transformers · Hugging Face · ML Pipelines</div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🤖</div>
-      <div class="skill-title">AI & Embedded Systems</div>
-      <div class="skill-items">YOLOv5 · PyTorch · OpenCV · NVIDIA Jetson Nano / Orin · Computer Vision Pipelines</div>
+      <div class="skill-icon">👁️</div>
+      <div class="skill-title">Computer Vision</div>
+      <div class="skill-items">OpenCV · Object Detection · Semantic Segmentation · 360° Perception · OCR · Material Classification · Real-time Video · Photogrammetry · SfM · MVS</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-title">Data & Cloud</div>
+      <div class="skill-items">Azure Blob · Azure SQL · Azure IoT Central · AWS (S3, Lambda, IoT Core) · PostgreSQL · Pandas · Data Pipelines · Telemetry Analytics · Data Processing · FastAPI · Flask · Docker · REST APIs</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-title">Analytics & Data</div>
+      <div class="skill-items">Data Analysis · Performance Benchmarking · Operational Analytics · Data Visualization · Telemetry Monitoring · Reporting Pipelines · Structured Logging · Workflow Optimization</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📡</div>
+      <div class="skill-title">Robotics & SLAM</div>
+      <div class="skill-items">FastLIO · ROS2 · RViz · Gazebo · Nav2 · LiDAR · IMU · Depth Camera · GPS · Sensor Fusion · Open3D · PDAL · COPC · Occupancy Grids · Digital Twins · IFC</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-title">Edge & Embedded</div>
+      <div class="skill-items">NVIDIA Jetson Nano · NVIDIA Jetson Orin · CUDA · GStreamer · NVMM · TensorRT · Real-time Inference · Embedded AI Deployment</div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">💻</div>
       <div class="skill-title">Programming</div>
-      <div class="skill-items">Python · C++ · C · Java</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">☁️</div>
-      <div class="skill-title">Cloud & Systems</div>
-      <div class="skill-items">Azure IoT Central · Telemetry Pipelines · Linux</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🌐</div>
-      <div class="skill-title">Web & DevOps</div>
-      <div class="skill-items">Flask · FastAPI · Docker · React.js · Next.js</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🌍</div>
-      <div class="skill-title">Languages</div>
-      <div class="skill-items">Arabic — Native · English — Fluent</div>
+      <div class="skill-items">Python · SQL · C++ · Java · React.js · Next.js · Docker · RabbitMQ · CI/CD · Linux · Git · Multithreading · Async Processing</div>
     </div>
   </div>
 </section>
@@ -521,103 +601,114 @@
 <section id="projects">
   <div class="section-label">Projects</div>
   <h2 class="section-heading">Selected work</h2>
+
   <div class="projects-grid">
-    <div class="proj-card">
-      <div class="proj-num">01 · PERCEPTION</div>
-      <div class="proj-name">360° Perception Pipeline</div>
-      <div class="proj-desc">
-      End-to-end 360° perception system using YOLOv5 with degree-based quadrant splitting.
-      Designed to improve spatial accuracy and reduce detection ambiguity in panoramic images.
 
-      Optimized for embedded deployment on NVIDIA Jetson, achieving ~1.4s inference per quadrant.
-      Evaluated trade-offs between resolution, latency, and detection accuracy across multiple configurations.
+    <div class="proj-card featured">
+      <div>
+        <div class="proj-badge">Production · GlobalDWS</div>
+        <div class="proj-num">01 · ML · EDGE AI</div>
+        <div class="proj-name">Real-Time 360° ML Perception Pipeline</div>
+        <div class="proj-desc">
+          Production ML inference system on NVIDIA Jetson: YOLOv5 object detection + EasyOCR + MINC material classification running in real-time with dual-thread architecture. 360° images split into directional quadrants using degree-to-pixel mapping. Time-windowed deduplication, Azure Blob upload, Azure SQL integration, and CSV audit logging.
+        </div>
+      </div>
+      <div class="proj-stack">
+        <span class="stack-tag">YOLOv5</span><span class="stack-tag">PyTorch</span><span class="stack-tag">OpenCV</span><span class="stack-tag">EasyOCR</span><span class="stack-tag">MINC</span><span class="stack-tag">Jetson</span><span class="stack-tag">Azure SQL</span>
+      </div>
+    </div>
 
-      Integrated structured telemetry for real-time system monitoring and analysis.
-      </div>     
+    <div class="proj-card featured">
+      <div>
+        <div class="proj-badge">Production · GlobalDWS</div>
+        <div class="proj-num">02 · DATA PIPELINE · CLOUD</div>
+        <div class="proj-name">Autonomous Mapping Data Pipeline & API</div>
+        <div class="proj-desc">
+          End-to-end data pipeline from LiDAR sensor acquisition to cloud: PCD → LAS → COPC conversion, structured telemetry ingestion, Azure Blob upload with retry logic, room-level JSON generation, and FastAPI REST backend with background-threaded processing and persistent job state management.
+        </div>
+      </div>
       <div class="proj-stack">
-        <span class="stack-tag">YOLOv5</span><span class="stack-tag">OpenCV</span><span class="stack-tag">PyTorch</span><span class="stack-tag">Azure IoT</span><span class="stack-tag">Jetson Orin</span>
+        <span class="stack-tag">FastAPI</span><span class="stack-tag">PDAL</span><span class="stack-tag">Open3D</span><span class="stack-tag">Azure Blob</span><span class="stack-tag">Azure SQL</span><span class="stack-tag">Python</span><span class="stack-tag">Docker</span>
       </div>
     </div>
-    <div class="proj-card">
-      <div class="proj-num">02 · MACHINE LEARNING</div>
-      <div class="proj-name">Machine Failure Prediction</div>
-      <div class="proj-desc">ML classification model to detect and categorize machinery faults from sensor data. Explored feature engineering, anomaly detection, and model interpretability.</div>
+
+    <div class="proj-card featured">
+      <div>
+        <div class="proj-badge">Production · GlobalDWS</div>
+        <div class="proj-num">03 · COMPUTER VISION · SENSOR FUSION</div>
+        <div class="proj-name">Triple-Sensor Fusion → Digital Twin Pipeline</div>
+        <div class="proj-desc">
+          LiDAR + Depth Camera + 360° imagery fusion producing textured 3D reconstructions and IFC building models via RealityCapture (SfM + MVS). Combined with pose-anchored semantic enrichment using YOLO, OCR, and MINC — producing structured room metadata for digital twin applications.
+        </div>
+      </div>
       <div class="proj-stack">
-        <span class="stack-tag">Python</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">Pandas</span><span class="stack-tag">Classification</span>
+        <span class="stack-tag">RealityCapture</span><span class="stack-tag">LiDAR</span><span class="stack-tag">Depth Camera</span><span class="stack-tag">YOLO</span><span class="stack-tag">OCR</span><span class="stack-tag">IFC</span><span class="stack-tag">SfM</span>
       </div>
     </div>
-    <div class="proj-card">
-      <div class="proj-num">03 · DATA SYSTEMS</div>
-      <div class="proj-name">Robotics Error Logs Database</div>
-      <div class="proj-desc">Structured data system for improving robot debugging and traceability. Enables pattern recognition across error logs and reduces mean time to diagnosis.</div>
+
+    <div class="proj-card featured">
+      <div>
+        <div class="proj-badge">Production · GlobalDWS</div>
+        <div class="proj-num">04 · SPATIAL AI · AUTONOMOUS SYSTEMS</div>
+        <div class="proj-name">LiDAR-Inertial SLAM Mapping System</div>
+        <div class="proj-desc">
+          End-to-end autonomous mapping using FastLIO + ROS2 with Livox MID360 and Pacecat M300 LiDARs. Full stack: ROS2 driver configuration, LiDAR-inertial odometry, 3D map generation, PCD → LAS → COPC conversion, and 2D occupancy grid extraction for navigation.
+        </div>
+      </div>
       <div class="proj-stack">
-        <span class="stack-tag">Database Design</span><span class="stack-tag">SQL</span><span class="stack-tag">Robotics</span>
+        <span class="stack-tag">FastLIO</span><span class="stack-tag">ROS2</span><span class="stack-tag">PDAL</span><span class="stack-tag">Open3D</span><span class="stack-tag">COPC</span><span class="stack-tag">RViz</span><span class="stack-tag">Gazebo</span>
       </div>
     </div>
+
     <div class="proj-card">
-  <div class="proj-num">04 · AI + DATA SCIENCE</div>
-  <div class="proj-name">Autonomous Systems Risk Analysis with Human-in-the-Loop</div>
-  <div class="proj-desc">
-    Developed a data-driven model to analyze risks and decision-making behavior in autonomous weapon systems using real-world drone data (Yemen, Somalia).
-    Implemented a human-in-the-loop framework to improve system accountability and decision validation.
-    Combined machine learning with ethical evaluation frameworks to study bias, reliability, and failure cases in high-risk environments.
-  </div>
-  <div class="proj-stack">
-    <span class="stack-tag">Python</span>
-    <span class="stack-tag">Machine Learning</span>
-    <span class="stack-tag">Human-in-the-Loop</span>
-    <span class="stack-tag">Data Analysis</span>
-  </div>
-</div>
-    
+      <div>
+        <div class="proj-num">05 · MACHINE LEARNING</div>
+        <div class="proj-name">Machine Failure Prediction</div>
+        <div class="proj-desc">ML classification model detecting and categorizing machinery faults from sensor data. Feature engineering, anomaly detection, and model interpretability for predictive maintenance applications.</div>
+      </div>
+      <div class="proj-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">Scikit-learn</span><span class="stack-tag">Pandas</span><span class="stack-tag">Anomaly Detection</span>
+      </div>
+    </div>
+
     <div class="proj-card">
-      <div class="proj-num">05 · NETWORKING</div>
-      <div class="proj-name">UDP Reliable Transfer Protocol</div>
-      <div class="proj-desc">Custom implementation of reliability over UDP: ACKs, retransmissions, sliding window, and timeout handling. Tested under simulated packet loss.</div>
+      <div>
+        <div class="proj-num">06 · DISTRIBUTED SYSTEMS</div>
+        <div class="proj-name">MelodySync — Microservices Media Pipeline</div>
+        <div class="proj-desc">
+          Multi-service media conversion system: Docker containerization, async communication via RabbitMQ, JWT authentication, CI/CD pipelines with GitLab container registry.
+        </div>
+      </div>
+      <div class="proj-stack">
+        <span class="stack-tag">Docker</span><span class="stack-tag">RabbitMQ</span><span class="stack-tag">Flask</span><span class="stack-tag">Next.js</span><span class="stack-tag">CI/CD</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div>
+        <div class="proj-num">07 · AI · DATA ANALYSIS</div>
+        <div class="proj-name">Autonomous Systems Risk Analysis</div>
+        <div class="proj-desc">
+          Data-driven ML model analyzing risk and decision-making in autonomous systems using real-world operational data. Human-in-the-loop validation framework combining ML with ethical evaluation to study bias, reliability, and failure modes.
+        </div>
+      </div>
+      <div class="proj-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">ML</span><span class="stack-tag">Human-in-the-Loop</span><span class="stack-tag">Data Analysis</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div>
+        <div class="proj-num">08 · NETWORKING</div>
+        <div class="proj-name">UDP Reliable Transfer Protocol</div>
+        <div class="proj-desc">Custom reliability over UDP: ACKs, retransmissions, sliding window, and timeout handling. Tested under simulated packet loss.</div>
+      </div>
       <div class="proj-stack">
         <span class="stack-tag">C</span><span class="stack-tag">Networking</span><span class="stack-tag">UDP</span><span class="stack-tag">Systems</span>
       </div>
     </div>
-   <div class="proj-card">
-  <div class="proj-num">06 · DISTRIBUTED SYSTEMS</div>
-  <div class="proj-name">MelodySync – Microservices Media Processing System</div>
 
-  <div class="proj-desc">
-    Designed and deployed a multi-service web application for media conversion using a microservices architecture.
-    
-    Containerized frontend, backend, and database services using Docker, enabling consistent deployment across environments.
-    Implemented asynchronous communication between services using a message broker (RabbitMQ) to handle media processing at scale.
-
-    Built secure authentication using JWT and integrated CI/CD pipelines with GitLab container registry for automated builds and deployment.
-    Evaluated system trade-offs between synchronous and asynchronous processing, focusing on scalability, latency, and resource efficiency.
   </div>
-
-  <div class="proj-stack">
-    <span class="stack-tag">Docker</span>
-    <span class="stack-tag">Microservices</span>
-    <span class="stack-tag">RabbitMQ</span>
-    <span class="stack-tag">Flask</span>
-    <span class="stack-tag">Next.js</span>
-    <span class="stack-tag">CI/CD</span>
-  </div>
-</div>
-
-  <div class="proj-card">
-  <div class="proj-num">07 · MULTI-SENSOR SYSTEMS</div>
-  <div class="proj-name">LiDAR + Vision 3D Mapping Pipeline</div>
-  <div class="proj-desc">
-    Designed a multi-sensor pipeline combining LiDAR point clouds and camera data to generate structured 3D maps and room-level semantic understanding.
-    Implemented synchronization between visual detections (YOLO, OCR) and spatial data using timestamps, enabling accurate mapping of objects and room attributes.
-    Focused on system-level integration, data alignment, and efficient processing of large-scale point cloud data.
-  </div>
-  <div class="proj-stack">
-    <span class="stack-tag">LiDAR</span>
-    <span class="stack-tag">Open3D</span>
-    <span class="stack-tag">YOLO</span>
-    <span class="stack-tag">OCR</span>
-    <span class="stack-tag">Point Clouds</span>
-  </div>
-</div>
 </section>
 
 <!-- CONTACT -->
@@ -626,9 +717,9 @@
   <h2 class="section-heading">Let's connect</h2>
   <div class="contact-grid">
     <div class="contact-body">
-      <p>I'm actively open to research positions, engineering roles, and collaborations at the intersection of robotics, embedded AI, and ML systems — particularly in the UAE and internationally.</p>
-      <p>If you're working on hardware-efficient AI, sensor fusion, digital twins, or ML systems research and think there's a fit, I'd love to hear from you.</p>
-      <p><span class="status-dot"></span> Available for roles starting mid-2026 · Open to relocation worldwide.</p>
+      <p>I'm actively open to opportunities in AI engineering, machine learning, computer vision, backend systems, data platforms, analytics, and intelligent automation — across startups, AI teams, and technology-driven organizations.</p>
+      <p>If you're building production ML systems, perception pipelines, data platforms, or autonomous applications and think there's a fit, I'd love to hear from you.</p>
+      <p><span class="status-dot"></span> Available now 
     </div>
     <div class="contact-links">
       <a class="contact-link" href="mailto:janachamma33@outlook.com">
@@ -665,7 +756,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>Jana Chamma · Robotics & AI Engineer · Tripoli, Lebanon · Open to Relocation</p>
+  <p>Jana Chamma · AI & ML Engineer · Tripoli, Lebanon · Open to Relocation</p>
 </footer>
 
 </body>
